@@ -15,6 +15,21 @@
             "username": "root",
             "connectionTimeout": 30,
             "askForPassword": true
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "Potato",
+            "database": "test_data1",
+            "username": "root",
+            "connectionTimeout": 50
         }
     ]
 }
