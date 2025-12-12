@@ -30,6 +30,20 @@
             "database": "test_data1",
             "username": "root",
             "connectionTimeout": 50
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "Spring 25",
+            "database": "spring25",
+            "username": "root"
         }
     ]
 }
