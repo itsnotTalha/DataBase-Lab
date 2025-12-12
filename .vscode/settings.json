@@ -44,6 +44,20 @@
             "name": "Spring 25",
             "database": "spring25",
             "username": "root"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "Fall 24",
+            "database": "fall24",
+            "username": "root"
         }
     ]
 }
