@@ -1,0 +1,234 @@
+
+-- USE summer25;
+
+-- -- 1. Create Branch Table
+-- CREATE TABLE Branch (
+--     branch_id INT PRIMARY KEY,
+--     name VARCHAR(100),
+--     city VARCHAR(100),
+--     rating DECIMAL(3, 1),
+--     manager_id INT -- This links to Librarian, but we create it here first
+-- );
+
+-- -- 2. Create Librarian Table
+-- -- The image shows (librarian_id, name) as PK, but usually ID is sufficient. 
+-- -- I will use a composite PK to match your image strictly.
+-- CREATE TABLE Librarian (
+--     librarian_id INT,
+--     name VARCHAR(100),
+--     role VARCHAR(50),
+--     salary DECIMAL(10, 2),
+--     branch_id INT,
+--     PRIMARY KEY (librarian_id, name),
+--     FOREIGN KEY (branch_id) REFERENCES Branch(branch_id)
+-- );
+
+-- -- 3. Create Member Table
+-- CREATE TABLE Member (
+--     member_id INT PRIMARY KEY,
+--     name VARCHAR(100),
+--     email VARCHAR(100),
+--     phone VARCHAR(20),
+--     address VARCHAR(255)
+-- );
+
+-- -- 4. Create Book Table
+-- CREATE TABLE Book (
+--     book_id INT PRIMARY KEY,
+--     title VARCHAR(150),
+--     genre VARCHAR(50),
+--     price DECIMAL(10, 2)
+-- );
+
+-- -- 5. Create Section Table
+-- CREATE TABLE Section (
+--     section_id INT PRIMARY KEY,
+--     branch_id INT,
+--     category VARCHAR(50),
+--     floor INT,
+--     status VARCHAR(20), -- e.g., Open, Closed, Renovation
+--     max_capacity INT,
+--     FOREIGN KEY (branch_id) REFERENCES Branch(branch_id)
+-- );
+
+-- -- 6. Create Service Table
+-- CREATE TABLE Service (
+--     service_id INT PRIMARY KEY,
+--     section_id INT,
+--     service_type VARCHAR(100),
+--     cost DECIMAL(10, 2),
+--     FOREIGN KEY (section_id) REFERENCES Section(section_id)
+-- );
+
+-- -- 7. Create Loan Table
+-- CREATE TABLE Loan (
+--     loan_id INT PRIMARY KEY,
+--     member_id INT,
+--     book_id INT,
+--     branch_id INT,
+--     loan_date DATE,
+--     return_date DATE,
+--     FOREIGN KEY (member_id) REFERENCES Member(member_id),
+--     FOREIGN KEY (book_id) REFERENCES Book(book_id),
+--     FOREIGN KEY (branch_id) REFERENCES Branch(branch_id)
+-- );
+
+-- -- ---------------------------------
+-- -- 1. Insert Data into BRANCH
+-- -- -----------------------------------------
+
+-- INSERT INTO Branch (branch_id, name, city, rating, manager_id) VALUES
+-- (1, 'Central Library', 'New York', 4.8, 101),
+-- (2, 'Westside Public', 'Chicago', 4.2, 102),
+-- (3, 'Downtown Hub', 'San Francisco', 4.9, 103),
+-- (4, 'North Hills', 'Austin', 3.8, 104),
+-- (5, 'East End Reader', 'Boston', 4.5, 105),
+-- (6, 'Sunnydale Branch', 'Los Angeles', 4.0, 106),
+-- (7, 'Lakeside Reading', 'Seattle', 4.7, 107),
+-- (8, 'Metro Library', 'Miami', 3.5, 108),
+-- (9, 'Historic Archives', 'Philadelphia', 4.6, 109),
+-- (10, 'Tech District', 'San Jose', 4.9, 110);
+
+-- -- -----------------------------------------
+-- -- 2. Insert Data into LIBRARIAN
+-- -- -----------------------------------------
+-- INSERT INTO Librarian (librarian_id, name, role, salary, branch_id) VALUES
+-- (101, 'Alice Johnson', 'Manager', 75000.00, 1),
+-- (102, 'Bob Smith', 'Manager', 72000.00, 2),
+-- (103, 'Charlie Brown', 'Manager', 78000.00, 3),
+-- (104, 'Diana Prince', 'Archivist', 55000.00, 1),
+-- (105, 'Evan Wright', 'Manager', 71000.00, 5),
+-- (106, 'Fiona Green', 'Assistant', 40000.00, 2),
+-- (107, 'George King', 'Manager', 73000.00, 7),
+-- (108, 'Hannah Scott', 'Clerk', 35000.00, 3),
+-- (109, 'Ian Malcolm', 'Researcher', 60000.00, 9),
+-- (110, 'Julia Roberts', 'Manager', 80000.00, 10),
+-- (111, 'Kevin Hart', 'Clerk', 32000.00, 1),
+-- (112, 'Laura Croft', 'Assistant', 42000.00, 5),
+-- (113, 'Mike Ross', 'Assistant', 41000.00, 6),
+-- (114, 'Nancy Drew', 'Researcher', 58000.00, 4),
+-- (115, 'Oscar Wilde', 'Archivist', 56000.00, 9);
+
+-- -- -----------------------------------------
+-- -- 3. Insert Data into MEMBER
+-- -- -----------------------------------------
+-- INSERT INTO Member (member_id, name, email, phone, address) VALUES
+-- (201, 'John Doe', 'john@example.com', '555-0101', '123 Maple St'),
+-- (202, 'Jane Roe', 'jane@example.com', '555-0102', '456 Oak Ave'),
+-- (203, 'Sam Wilson', 'sam@example.com', '555-0103', '789 Pine Rd'),
+-- (204, 'Lucy Liu', 'lucy@example.com', '555-0104', '321 Elm St'),
+-- (205, 'Mark Twain', 'mark@example.com', '555-0105', '654 Cedar Ln'),
+-- (206, 'Emily Bronte', 'emily@example.com', '555-0106', '987 Birch Blvd'),
+-- (207, 'Chris Evans', 'chris@example.com', '555-0107', '147 Walnut Dr'),
+-- (208, 'Scarlett Jo', 'scarlett@example.com', '555-0108', '258 Cherry Ct'),
+-- (209, 'Tom Holland', 'tom@example.com', '555-0109', '369 Spruce Way'),
+-- (210, 'Bruce Wayne', 'bruce@example.com', '555-0110', '100 Manor Ln'),
+-- (211, 'Clark Kent', 'clark@example.com', '555-0111', '200 Daily Pl'),
+-- (212, 'Peter Parker', 'peter@example.com', '555-0112', '300 Queens Blvd'),
+-- (213, 'Tony Stark', 'tony@example.com', '555-0113', '400 Tower St'),
+-- (214, 'Natasha R', 'nat@example.com', '555-0114', '500 Spy Ave'),
+-- (215, 'Steve Rogers', 'steve@example.com', '555-0115', '600 Shield Dr');
+
+-- -- -----------------------------------------
+-- -- 4. Insert Data into BOOK
+-- -- -----------------------------------------
+-- INSERT INTO Book (book_id, title, genre, price) VALUES
+-- (301, 'The Great Gatsby', 'Classic', 15.99),
+-- (302, '1984', 'Dystopian', 12.50),
+-- (303, 'Harry Potter 1', 'Fantasy', 20.00),
+-- (304, 'The Hobbit', 'Fantasy', 18.00),
+-- (305, 'Dune', 'Sci-Fi', 22.50),
+-- (306, 'Pride and Prejudice', 'Romance', 10.99),
+-- (307, 'To Kill a Mockingbird', 'Classic', 14.50),
+-- (308, 'The Catcher in the Rye', 'Classic', 11.00),
+-- (309, 'Brave New World', 'Sci-Fi', 13.75),
+-- (310, 'Moby Dick', 'Adventure', 16.00),
+-- (311, 'War and Peace', 'Historical', 25.00),
+-- (312, 'The Odyssey', 'Epic', 19.99),
+-- (313, 'Hamlet', 'Drama', 9.99),
+-- (314, 'The Alchemist', 'Fiction', 17.50),
+-- (315, 'Sapiens', 'Non-Fiction', 24.00);
+
+-- -- -----------------------------------------
+-- -- 5. Insert Data into SECTION
+-- -- -----------------------------------------
+-- INSERT INTO Section (section_id, branch_id, category, floor, status, max_capacity) VALUES
+-- (401, 1, 'Children', 1, 'Open', 50),
+-- (402, 1, 'Adult Fiction', 2, 'Open', 100),
+-- (403, 2, 'Reference', 1, 'Open', 30),
+-- (404, 2, 'Digital Lab', 2, 'Maintenance', 20),
+-- (405, 3, 'Study Hall', 3, 'Open', 200),
+-- (406, 3, 'Children', 1, 'Open', 45),
+-- (407, 4, 'Periodicals', 1, 'Open', 25),
+-- (408, 5, 'History', 2, 'Open', 60),
+-- (409, 6, 'Science', 2, 'Open', 55),
+-- (410, 7, 'Art & Design', 3, 'Renovation', 40),
+-- (411, 8, 'General', 1, 'Open', 80),
+-- (412, 9, 'Archives', 1, 'Restricted', 10);
+
+-- -- -----------------------------------------
+-- -- 6. Insert Data into SERVICE
+-- -- -----------------------------------------
+-- INSERT INTO Service (service_id, section_id, service_type, cost) VALUES
+-- (501, 401, 'Storytelling', 0.00),
+-- (502, 402, 'Book Club', 5.00),
+-- (503, 403, 'Research Assist', 10.00),
+-- (504, 404, 'Internet Access', 0.00),
+-- (505, 404, 'Printing', 0.50),
+-- (506, 404, '3D Printing', 15.00),
+-- (507, 405, 'Room Rental', 25.00),
+-- (508, 411, 'Photocopy', 0.10),
+-- (509, 409, 'Science Workshop', 12.00),
+-- (510, 412, 'Document Scan', 2.00);
+
+-- -- -----------------------------------------
+-- -- 7. Insert Data into LOAN
+-- -- -----------------------------------------
+-- INSERT INTO Loan (loan_id, member_id, book_id, branch_id, loan_date, return_date) VALUES
+-- (1001, 201, 301, 1, '2023-10-01', '2023-10-15'),
+-- (1002, 202, 302, 1, '2023-10-02', '2023-10-16'),
+-- (1003, 203, 305, 2, '2023-10-05', NULL), -- Not returned yet
+-- (1004, 204, 303, 3, '2023-10-10', '2023-10-24'),
+-- (1005, 205, 310, 4, '2023-10-12', '2023-10-20'),
+-- (1006, 201, 304, 1, '2023-11-01', NULL),
+-- (1007, 206, 306, 5, '2023-11-03', '2023-11-17'),
+-- (1008, 207, 307, 2, '2023-11-05', '2023-11-19'),
+-- (1009, 208, 308, 6, '2023-11-07', NULL),
+-- (1010, 209, 309, 7, '2023-11-08', '2023-11-22'),
+-- (1011, 210, 311, 8, '2023-11-10', NULL),
+-- (1012, 211, 312, 1, '2023-11-12', '2023-11-26'),
+-- (1013, 212, 313, 3, '2023-11-15', '2023-11-29'),
+-- (1014, 213, 314, 9, '2023-11-18', NULL),
+-- (1015, 214, 315, 10, '2023-11-20', '2023-12-04');
+
+-- A
+-- ALTER TABLE Service
+-- Add column librarian_id INT,
+-- ADD column librarian_name VARCHAR(150);
+
+-- ALTER TABLE Service
+-- Add CONSTRAINT fk_service_Librarian
+-- FOREIGN KEY (librarian_id,librarian_name)
+-- REFERENCES Librarian(librarian_id,name);
+
+-- B
+-- Korte hobe
+
+-- C
+-- SELECT name, salary
+-- FROM Librarian
+-- WHERE salary<50000 AND RIGHT(name,1) Not in ('a', 'e', 'i', 'o', 'u') 
+-- AND (name NOT LIKE '"%' or name NOT LIKE '%"');
+
+-- D
+--  SELECT m.* FROM Member m
+--  JOIN Loan l ON m.member_id=l.member_id
+--  JOIN Branch b ON b.branch_id = l.branch_id
+--  WHERE loan_date>'2024-01-01' AND city='Dhaka';
+
+-- E
+-- SELECT l.name, l.role, b.name
+-- FROM Librarian l
+-- JOIN Service s ON l.librarian_id = s.librarian_id AND l.name=s.librarian_name
+-- JOIN Branch b ON l.branch_id=b.branch_id
+-- WHERE b.branch_id >= 4;
