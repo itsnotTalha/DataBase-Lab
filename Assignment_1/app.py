@@ -121,6 +121,9 @@ def dashboard():
         male_percentage = 0
         female_percentage = 0
 
+    cursor.execute("SELECT id, name FROM users ORDER BY name ASC")
+    all_users = cursor.fetchall()
+
     cursor.close()
     conn.close()
 
@@ -131,7 +134,8 @@ def dashboard():
         total_users_male=total_users_male,
         total_users_female=total_users_female,
         male_percentage=male_percentage,
-        female_percentage=female_percentage
+        female_percentage=female_percentage,
+        all_users=all_users
     )
 
 

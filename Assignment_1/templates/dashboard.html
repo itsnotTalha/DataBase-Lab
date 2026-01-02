@@ -92,6 +92,24 @@
                 </div>
             </div>
         </div>
+        <div class="card shadow-sm mb-4" >
+            <div class="card-header bg-primary text-white">
+                <i class="bi bi-people-fill"></i> View All User
+            </div>
+            <div class="card-body">
+                <div class="input-group">
+                    <select class="form-select" id="userSelect">
+                        
+                        {% for u in all_users %}
+                            <option value="{{ u.id }}">{{ u.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <!-- <button class="btn btn-outline-primary" type="button" id="viewUserBtn">
+                        View
+                    </button> -->
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

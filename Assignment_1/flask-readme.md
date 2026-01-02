@@ -1,11 +1,11 @@
-# 🧑‍💻 Flask User Management System
+# User Management System
 
 A **Flask-based user authentication and dashboard system** integrated with **MySQL**.  
 This project supports user registration, login, password hashing, session management, secure password change, and basic gender-based dashboard statistics.
 
 ---
 
-## 🚀 Features
+## Features
 
 - ✅ User Registration  
 - ✅ Secure Login & Logout  
@@ -16,11 +16,11 @@ This project supports user registration, login, password hashing, session manage
 - ✅ Percentage Calculation (Male/Female)  
 - ✅ Secure Change Password (Old password verification)  
 - ✅ Forced Logout on Incorrect Password  
-- ✅ Bootstrap 5 UI  
+- ✅ Bootstrap 5 UI
 
 ---
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 - **Backend:** Python, Flask  
 - **Frontend:** HTML, Bootstrap 5  
@@ -48,41 +48,6 @@ project/
 
 ---
 
-## ⚙️ Installation & Setup
-
-### 1️⃣ Clone the Repository
-
-```bash
-git clone https://github.com/your-username/flask-user-system.git
-cd flask-user-system
-```
-
-### 2️⃣ Create Virtual Environment (Recommended)
-
-```bash
-python -m venv venv
-```
-
-Activate it:
-
-- **Windows**
-  ```bash
-  venv\Scripts\activate
-  ```
-
-- **Linux / macOS**
-  ```bash
-  source venv/bin/activate
-  ```
-
-### 3️⃣ Install Dependencies
-
-```bash
-pip install flask mysql-connector-python werkzeug
-```
-
----
-
 ## 🗄️ Database Setup (MySQL)
 
 ### Create Database
@@ -104,32 +69,6 @@ CREATE TABLE users (
     gender VARCHAR(10)
 );
 ```
-
----
-
-## 🔐 Configuration (`app.py`)
-
-Update your MySQL credentials inside `app.py`:
-
-```python
-db_config = {
-    'host': 'localhost',
-    'user': 'root',
-    'password': 'your_password',
-    'database': 'user_system'
-}
-```
-
----
-
-## ▶️ Running the Application
-
-```bash
-python app.py
-```
-
-Now open your browser and visit:  
-[http://127.0.0.1:5000](http://127.0.0.1:5000)
 
 ---
 
@@ -179,12 +118,6 @@ Now open your browser and visit:
 - Forgot password feature  
 - Admin dashboard  
 - Chart visualization (Pie/Bar charts)  
-
----
-
-## 📄 License
-
-This project is for **educational purposes** and free to use or modify.
 
 ---
 
