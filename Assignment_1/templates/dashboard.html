@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-white">
+    <!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container d-flex justify-content-between">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#">System Dashboard</a>
+
+        <!-- Right-side buttons -->
+        <div class="d-flex gap-2">
+            <a href="/change_password" class="btn btn-warning btn-sm">
+                Change Password
+            </a>
+            <a href="/logout" class="btn btn-danger btn-sm">
+                Logout
+            </a>
+        </div>
+    </div>
+</nav>
+
+
+    <div class="container mt-5">
+        <h2 class="mb-4">Welcome, {{ user.name }}!</h2>
+
+        <!-- Card for User Profile Data -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                Your Profile Details (Fetched from DB)
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>ID</th>
+                        <td>{{ user.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{ user.email }}</td>
+                    </tr>
+                    <tr>
+                        <th>Phone</th>
+                        <td>{{ user.phone }}</td>
+                    </tr>
+                    <tr>
+                        <th>Gender</th>
+                        <td>{{ user.gender }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Card for System Statistics -->
+         <div style="display: flex; justify-content: space-between;">
+            <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                <div class="card-header">System Stats</div>
+                <div class="card-body">
+                    <h5 class="card-title">Total Registered Users</h5>
+                    <p class="card-text display-4">{{ total_users }}</p>
+                </div>
+            </div>
+            <div class="card text-white mb-3" style="max-width: 18rem; background-color: #0d1b2a;">
+                <div class="card-header">System Stats</div>
+                <div class="card-body">
+                    <h5 class="card-title">Total Registered Male</h5>
+                    <p class="card-text display-4">{{ total_users_male }}</p>
+                </div>
+            </div>
+            <div class="card text-white mb-3" style="max-width: 18rem; background-color: #0d1b2a;">
+                <div class="card-header">System Stats</div>
+                <div class="card-body">
+                    <h5 class="card-title">Total Male Percentage</h5>
+                    <p class="card-text display-4">{{ male_percentage }}%</p>
+                </div>
+            </div>
+            <div class="card text-white mb-3" style="max-width: 18rem; background-color: #e83e8c;">
+                <div class="card-header">System Stats</div>
+                <div class="card-body">
+                    <h5 class="card-title">Total Registered Female</h5>
+                    <p class="card-text display-4">{{ total_users_female }}</p>
+                </div>
+            </div>
+            <div class="card text-white mb-3" style="max-width: 18rem; background-color: #e83e8c;">
+                <div class="card-header">System Stats</div>
+                <div class="card-body">
+                    <h5 class="card-title">Total Female Percentage</h5>
+                    <p class="card-text display-4">{{ female_percentage }}%</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
